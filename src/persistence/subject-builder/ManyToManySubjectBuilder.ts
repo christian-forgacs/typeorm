@@ -173,6 +173,7 @@ export class ManyToManySubjectBuilder {
                 metadata: relation.junctionEntityMetadata!,
                 parentSubject: subject,
                 canBeInserted: true,
+                entity: {},
             })
             this.subjects.push(junctionSubject)
 
@@ -182,6 +183,12 @@ export class ManyToManySubjectBuilder {
                     value: ownerValue,
                     // valueFactory: (value) => column.referencedColumn!.getEntityValue(value) // column.referencedColumn!.getEntityValue(ownerEntityMap),
                 })
+                column.setEntityValue(
+                    junctionSubject.entity as ObjectLiteral,
+                    column.referencedColumn!.getEntityValue(
+                        ownerValue?.entity ?? ownerValue,
+                    ),
+                )
             })
 
             relation.junctionEntityMetadata!.inverseColumns.forEach(
@@ -191,6 +198,12 @@ export class ManyToManySubjectBuilder {
                         value: inverseValue,
                         // valueFactory: (value) => column.referencedColumn!.getEntityValue(value) // column.referencedColumn!.getEntityValue(inverseEntityMap),
                     })
+                    column.setEntityValue(
+                        junctionSubject.entity as ObjectLiteral,
+                        column.referencedColumn!.getEntityValue(
+                            inverseValue?.entity ?? inverseValue,
+                        ),
+                    )
                 },
             )
         })
