@@ -22,6 +22,13 @@ export class TableIndex {
     columnNames: string[] = []
 
     /**
+     * Columns for include in this index.
+     * Works only with MSSQL
+     * TODO add more compatible database types
+     */
+    includeColumnNames: string[] = []
+
+    /**
      * Indicates if this index is unique.
      */
     isUnique: boolean
@@ -54,6 +61,13 @@ export class TableIndex {
     parser?: string
 
     /**
+     * Columns for include in this index.
+     * Works only with MSSQL
+     * TODO add more compatible database types
+     */
+    includeColumns?: string[]
+
+    /**
      * Index filter condition.
      */
     where: string
@@ -70,6 +84,9 @@ export class TableIndex {
         this.isFulltext = !!options.isFulltext
         this.isNullFiltered = !!options.isNullFiltered
         this.parser = options.parser
+        this.includeColumns = options.includeColumns
+            ? options.includeColumns
+            : undefined
         this.where = options.where ? options.where : ""
     }
 
@@ -89,6 +106,7 @@ export class TableIndex {
             isFulltext: this.isFulltext,
             isNullFiltered: this.isNullFiltered,
             parser: this.parser,
+            includeColumns: this.includeColumns,
             where: this.where,
         })
     }
@@ -111,6 +129,7 @@ export class TableIndex {
             isFulltext: indexMetadata.isFulltext,
             isNullFiltered: indexMetadata.isNullFiltered,
             parser: indexMetadata.parser,
+            includeColumns: indexMetadata.includeColumns,
             where: indexMetadata.where,
         })
     }

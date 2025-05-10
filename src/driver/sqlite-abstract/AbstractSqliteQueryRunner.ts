@@ -305,6 +305,7 @@ export abstract class AbstractSqliteQueryRunner
                         table,
                         index.columnNames,
                         index.where,
+                        index.includeColumnNames,
                     )
                 upQueries.push(this.createIndexSql(table, index))
                 downQueries.push(this.dropIndexSql(index))
@@ -499,6 +500,7 @@ export abstract class AbstractSqliteQueryRunner
                 oldTable,
                 index.columnNames,
                 index.where,
+                index.includeColumnNames,
             )
 
             // Skip renaming if Index has user defined constraint name
@@ -508,6 +510,7 @@ export abstract class AbstractSqliteQueryRunner
                 newTable,
                 index.columnNames,
                 index.where,
+                index.includeColumnNames,
             )
         })
 
@@ -683,6 +686,7 @@ export abstract class AbstractSqliteQueryRunner
                                 table,
                                 index.columnNames,
                                 index.where,
+                                index.includeColumnNames,
                             )
 
                         index.columnNames.splice(
@@ -700,6 +704,7 @@ export abstract class AbstractSqliteQueryRunner
                                     changedTable,
                                     index.columnNames,
                                     index.where,
+                                    index.includeColumnNames,
                                 )
                         }
                     })
@@ -2102,6 +2107,7 @@ export abstract class AbstractSqliteQueryRunner
                     newTable,
                     index.columnNames,
                     index.where,
+                    index.includeColumnNames,
                 )
             upQueries.push(this.createIndexSql(newTable, index))
             downQueries.push(this.dropIndexSql(index))

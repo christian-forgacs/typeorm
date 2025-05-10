@@ -492,6 +492,7 @@ export class OracleQueryRunner extends BaseQueryRunner implements QueryRunner {
                         table,
                         index.columnNames,
                         index.where,
+                        index.includeColumnNames,
                     )
                 upQueries.push(this.createIndexSql(table, index))
                 downQueries.push(this.dropIndexSql(index))
@@ -742,6 +743,7 @@ export class OracleQueryRunner extends BaseQueryRunner implements QueryRunner {
                 oldTable,
                 index.columnNames,
                 index.where,
+                index.includeColumnNames,
             )
 
             // Skip renaming if Index has user defined constraint name
@@ -752,6 +754,7 @@ export class OracleQueryRunner extends BaseQueryRunner implements QueryRunner {
                 newTable,
                 index.columnNames,
                 index.where,
+                index.includeColumnNames,
             )
 
             // build queries
@@ -1179,6 +1182,7 @@ export class OracleQueryRunner extends BaseQueryRunner implements QueryRunner {
                             clonedTable,
                             index.columnNames,
                             index.where,
+                            index.includeColumnNames,
                         )
 
                     // Skip renaming if Index has user defined constraint name
@@ -1195,6 +1199,7 @@ export class OracleQueryRunner extends BaseQueryRunner implements QueryRunner {
                             clonedTable,
                             index.columnNames,
                             index.where,
+                            index.includeColumnNames,
                         )
 
                     // build queries

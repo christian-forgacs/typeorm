@@ -90,6 +90,13 @@ export class IndexMetadata {
     columns: ColumnMetadata[] = []
 
     /**
+     * Columns for include in this index.
+     * Works only with MSSQL
+     * TODO add more compatible database types
+     */
+    includeColumns?: string[]
+
+    /**
      * User specified index name.
      */
     givenName?: string
@@ -145,6 +152,7 @@ export class IndexMetadata {
             this.isFulltext = !!options.args.fulltext
             this.isNullFiltered = !!options.args.nullFiltered
             this.parser = options.args.parser
+            this.includeColumns = options.args.includeColumnNames
             this.where = options.args.where
             this.isSparse = options.args.sparse
             this.isBackground = options.args.background
@@ -258,6 +266,7 @@ export class IndexMetadata {
                   this.entityMetadata.tableName,
                   this.columns.map((column) => column.databaseName),
                   this.where,
+                  this.includeColumns,
               )
         return this
     }

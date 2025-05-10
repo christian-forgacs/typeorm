@@ -279,6 +279,7 @@ export class EntitySchemaTransformer {
                     nullFiltered: index.nullFiltered === true ? true : false,
                     parser: index.parser,
                     synchronize: index.synchronize === false ? false : true,
+                    includeColumnNames: index.includeColumnNames,
                     where: index.where,
                     sparse: index.sparse,
                     columns: index.columns,

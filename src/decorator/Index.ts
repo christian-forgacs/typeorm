@@ -131,6 +131,9 @@ export function Index(
                 (options as { synchronize: false }).synchronize === false
                     ? false
                     : true,
+            includeColumnNames: options
+                ? options.includeColumnNames
+                : undefined,
             where: options ? options.where : undefined,
             unique: options && options.unique ? true : false,
             spatial: options && options.spatial ? true : false,

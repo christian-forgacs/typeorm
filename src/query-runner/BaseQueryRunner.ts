@@ -672,6 +672,7 @@ export abstract class BaseQueryRunner {
             table,
             index.columnNames,
             index.where,
+            index.includeColumnNames,
         )
     }
 }

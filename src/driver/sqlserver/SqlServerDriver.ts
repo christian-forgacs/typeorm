@@ -997,6 +997,8 @@ export class SqlServerDriver implements Driver {
                     name: column.databaseName,
                     type: this.normalizeType(column),
                     length: column.length,
+                    precision: column.precision,
+                    scale: column.scale,
                     isNullable: column.isNullable,
                     isArray: column.isArray,
                 }),

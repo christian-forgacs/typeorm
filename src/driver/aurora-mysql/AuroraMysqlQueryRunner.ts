@@ -478,6 +478,7 @@ export class AuroraMysqlQueryRunner
                 newTable,
                 index.columnNames,
                 index.where,
+                index.includeColumnNames,
             )
 
             // build queries
@@ -847,6 +848,7 @@ export class AuroraMysqlQueryRunner
                             clonedTable,
                             index.columnNames,
                             index.where,
+                            index.includeColumnNames,
                         )
 
                     // build queries
@@ -2484,6 +2486,7 @@ export class AuroraMysqlQueryRunner
                             table,
                             index.columnNames,
                             index.where,
+                            index.includeColumnNames,
                         )
 
                     let indexType = ""

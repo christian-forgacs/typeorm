@@ -598,6 +598,7 @@ export class SqlServerQueryRunner
                         table,
                         index.columnNames,
                         index.where,
+                        index.includeColumnNames,
                     )
                 upQueries.push(this.createIndexSql(table, index))
                 downQueries.push(this.dropIndexSql(table, index))
@@ -889,6 +890,7 @@ export class SqlServerQueryRunner
                 oldTable,
                 index.columnNames,
                 index.where,
+                index.includeColumnNames,
             )
 
             // Skip renaming if Index has user defined constraint name
@@ -899,6 +901,7 @@ export class SqlServerQueryRunner
                 newTable,
                 index.columnNames,
                 index.where,
+                index.includeColumnNames,
             )
 
             // build queries
@@ -1331,6 +1334,7 @@ export class SqlServerQueryRunner
                             clonedTable,
                             index.columnNames,
                             index.where,
+                            index.includeColumnNames,
                         )
 
                     // Skip renaming if Index has user defined constraint name
@@ -1347,6 +1351,7 @@ export class SqlServerQueryRunner
                             clonedTable,
                             index.columnNames,
                             index.where,
+                            index.includeColumnNames,
                         )
 
                     // build queries
@@ -3699,12 +3704,15 @@ export class SqlServerQueryRunner
         const columns = index.columnNames
             .map((columnName) => `"${columnName}"`)
             .join(", ")
+        const includeColumns = index.includeColumnNames
+            .map((columnName) => `"${columnName}"`)
+            .join(", ")
         return new Query(
             `CREATE ${index.isUnique ? "UNIQUE " : ""}INDEX "${
                 index.name
-            }" ON ${this.escapePath(table)} (${columns}) ${
-                index.where ? "WHERE " + index.where : ""
-            }`,
+            }" ON ${this.escapePath(table)} (${columns})${
+                includeColumns.length > 0 ? ` INCLUDE (${includeColumns}} ` : ""
+            }${index.where ? "WHERE " + index.where : ""}`,
         )
     }
 

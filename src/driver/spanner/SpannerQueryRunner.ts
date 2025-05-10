@@ -501,6 +501,7 @@ export class SpannerQueryRunner extends BaseQueryRunner implements QueryRunner {
                         table,
                         index.columnNames,
                         index.where,
+                        index.includeColumnNames,
                     )
                 upQueries.push(this.createIndexSql(table, index))
                 downQueries.push(this.dropIndexSql(table, index))

@@ -562,6 +562,7 @@ export class PostgresQueryRunner
                         table,
                         index.columnNames,
                         index.where,
+                        index.includeColumnNames,
                     )
                 upQueries.push(this.createIndexSql(table, index))
                 downQueries.push(this.dropIndexSql(table, index))
@@ -824,6 +825,7 @@ export class PostgresQueryRunner
                 oldTable,
                 index.columnNames,
                 index.where,
+                index.includeColumnNames,
             )
 
             // Skip renaming if Index has user defined constraint name
@@ -835,6 +837,7 @@ export class PostgresQueryRunner
                 newTable,
                 index.columnNames,
                 index.where,
+                index.includeColumnNames,
             )
 
             // build queries
@@ -1381,6 +1384,7 @@ export class PostgresQueryRunner
                             clonedTable,
                             index.columnNames,
                             index.where,
+                            index.includeColumnNames,
                         )
 
                     // Skip renaming if Index has user defined constraint name
@@ -1398,6 +1402,7 @@ export class PostgresQueryRunner
                             clonedTable,
                             index.columnNames,
                             index.where,
+                            index.includeColumnNames,
                         )
 
                     // build queries

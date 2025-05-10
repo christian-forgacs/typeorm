@@ -49,6 +49,13 @@ export interface TableIndexOptions {
     parser?: string
 
     /**
+     * Columns for include in this index.
+     * Works only with MSSQL
+     * TODO add more compatible database types
+     */
+    includeColumns?: string[]
+
+    /**
      * Index filter condition.
      */
     where?: string

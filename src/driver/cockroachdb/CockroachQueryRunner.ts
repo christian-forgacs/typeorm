@@ -589,6 +589,7 @@ export class CockroachQueryRunner
                             table,
                             index.columnNames,
                             index.where,
+                            index.includeColumnNames,
                         )
                     upQueries.push(this.createIndexSql(table, index))
                     downQueries.push(this.dropIndexSql(table, index))
@@ -877,6 +878,7 @@ export class CockroachQueryRunner
                 oldTable,
                 index.columnNames,
                 index.where,
+                index.includeColumnNames,
             )
 
             // Skip renaming if Index has user defined constraint name
@@ -888,6 +890,7 @@ export class CockroachQueryRunner
                 newTable,
                 index.columnNames,
                 index.where,
+                index.includeColumnNames,
             )
 
             // build queries
@@ -1405,6 +1408,7 @@ export class CockroachQueryRunner
                             clonedTable,
                             index.columnNames,
                             index.where,
+                            index.includeColumnNames,
                         )
 
                     // Skip renaming if Index has user defined constraint name
@@ -1422,6 +1426,7 @@ export class CockroachQueryRunner
                             clonedTable,
                             index.columnNames,
                             index.where,
+                            index.includeColumnNames,
                         )
 
                     // build queries

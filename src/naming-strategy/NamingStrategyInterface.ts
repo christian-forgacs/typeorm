@@ -88,6 +88,7 @@ export interface NamingStrategyInterface {
         tableOrName: Table | View | string,
         columns: string[],
         where?: string,
+        includeColumns?: string[],
     ): string
 
     /**

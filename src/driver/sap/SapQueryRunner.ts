@@ -492,6 +492,7 @@ export class SapQueryRunner extends BaseQueryRunner implements QueryRunner {
                         table,
                         index.columnNames,
                         index.where,
+                        index.includeColumnNames,
                     )
                 upQueries.push(this.createIndexSql(table, index))
                 downQueries.push(this.dropIndexSql(table, index))
@@ -767,6 +768,7 @@ export class SapQueryRunner extends BaseQueryRunner implements QueryRunner {
                 newTable,
                 index.columnNames,
                 index.where,
+                index.includeColumnNames,
             )
 
             // drop old index
@@ -1155,6 +1157,7 @@ export class SapQueryRunner extends BaseQueryRunner implements QueryRunner {
                             clonedTable,
                             index.columnNames,
                             index.where,
+                            index.includeColumnNames,
                         )
 
                     // drop old index

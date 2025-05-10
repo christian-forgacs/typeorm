@@ -612,6 +612,7 @@ export class MysqlQueryRunner extends BaseQueryRunner implements QueryRunner {
                 newTable,
                 index.columnNames,
                 index.where,
+                index.includeColumnNames,
             )
 
             // build queries
@@ -1034,6 +1035,7 @@ export class MysqlQueryRunner extends BaseQueryRunner implements QueryRunner {
                             clonedTable,
                             index.columnNames,
                             index.where,
+                            index.includeColumnNames,
                         )
 
                     // build queries
@@ -2963,6 +2965,7 @@ export class MysqlQueryRunner extends BaseQueryRunner implements QueryRunner {
                             table,
                             index.columnNames,
                             index.where,
+                            index.includeColumnNames,
                         )
 
                     let indexType = ""
